@@ -45,10 +45,10 @@ app.get('/confirmation', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
-
 
 // Route to fetch data from the database
 app.get('/applications', (req, res) => {
@@ -59,3 +59,8 @@ app.get('/applications', (req, res) => {
       res.json(rows); // Send the data as a JSON response
   });
 });
+
+process.on('uncaughtException', (err) => {
+    console.error('Unhandled Exception', err);
+  });
+  

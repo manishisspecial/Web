@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-creditcardapp-dev-6ae12-authRole",
+      "UnauthRoleArn": "arn:aws:iam::235494778639:role/amplify-creditcardapp-dev-6ae12-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::235494778639:role/amplify-creditcardapp-dev-6ae12-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-creditcardapp-dev-6ae12-deployment",
+      "UnauthRoleName": "amplify-creditcardapp-dev-6ae12-unauthRole",
+      "StackName": "amplify-creditcardapp-dev-6ae12",
+      "StackId": "arn:aws:cloudformation:us-east-1:235494778639:stack/amplify-creditcardapp-dev-6ae12/6f3d1ae0-dd5c-11ef-a35b-0affe7ceb673",
+      "AmplifyAppId": "d2nbo4kpy6zrp"
+    }
+  }
+}
