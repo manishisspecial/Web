@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-center mb-6">Credit Card Application</h2>
+
+        <!-- Form -->
+        <form id="applicationForm" action="/submit" method="POST" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                <p id="nameError" class="text-red-500 text-xs hidden">Please enter your full name.</p>
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                <p id="emailError" class="text-red-500 text-xs hidden">Please enter a valid email address.</p>
+            </div>
+
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                <p id="phoneError" class="text-red-500 text-xs hidden">Please enter a valid phone number (10 digits).</p>
+            </div>
+
+            <div>
+                <label for="cardType" class="block text-sm font-medium text-gray-700">Credit Card Type</label>
+                <select id="cardType" name="cardType" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="Amex">American Express</option>
+                </select>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-md w-full">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', function(event) {
+            let isValid = true;
+
+            // Name validation
+            if (document.getElementById('name').value.trim() === '') {
+                document.getElementById('nameError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('nameError').classList.add('hidden');
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('emailError').classList.add('hidden');
+            }
+
+            // Phone validation
+            const phone = document.getElementById('phone').value;
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById('phoneError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').classList.add('hidden');
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
